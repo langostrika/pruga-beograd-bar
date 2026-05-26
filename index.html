@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pruga Beograd–Bar: Istorija finansiranja najvećeg projekta SFRJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1410;
+    --paper: #0d0b08;
+    --paper2: #141208;
+    --paper3: #1c1a14;
+    --rust: #c4622d;
+    --rust-light: #e07840;
+    --gold: #c9a227;
+    --gold-light: #e0b840;
+    --cream: #e8dfc8;
+    --cream-dim: #b8a888;
+    --cream-dark: #7a6e58;
+    --smoke: #4a4438;
+    --smoke-light: #6a5e50;
+    --line: rgba(200,180,140,0.15);
+    --line-strong: rgba(200,180,140,0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--cream);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ───── HERO ───── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+  }
+
+  .hero-illustration {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--rust-light);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 24px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--cream-dim);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-style: italic;
+  }
+
+  .hero-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--smoke-light);
+    text-transform: uppercase;
+  }
+
+  .scroll-hint {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--smoke-light);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint svg { opacity: 0.5; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ───── LAYOUT ───── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ───── SECTIONS ───── */
+  .section {
+    padding: 100px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 16px;
+    margin-top: 40px;
+  }
+
+  p {
+    color: var(--cream-dim);
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 300;
+  }
+
+  p strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  /* ───── TIMELINE ───── */
+  .timeline {
+    position: relative;
+    padding: 60px 0;
+  }
+
+  .timeline-spine {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line-strong) 10%, var(--line-strong) 90%, transparent);
+    transform: translateX(-0.5px);
+  }
+
+  .timeline-entry {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    margin-bottom: 80px;
+    align-items: start;
+  }
+
+  .timeline-entry:last-child { margin-bottom: 0; }
+
+  .timeline-left { text-align: right; padding-right: 40px; padding-top: 4px; }
+  .timeline-right { padding-left: 40px; padding-top: 4px; }
+
+  .timeline-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 4px var(--paper3), 0 0 0 5px var(--rust);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  .timeline-dot.gold { background: var(--gold); box-shadow: 0 0 0 4px var(--paper3), 0 0 0 5px var(--gold); }
+
+  .timeline-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--rust-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .timeline-year.gold-text { color: var(--gold-light); }
+
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .timeline-body {
+    font-size: 14px;
+    color: var(--cream-dark);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .timeline-stat {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(196,98,45,0.12);
+    border: 1px solid rgba(196,98,45,0.3);
+    padding: 6px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--rust-light);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-stat.gold-stat {
+    background: rgba(201,162,39,0.12);
+    border-color: rgba(201,162,39,0.3);
+    color: var(--gold-light);
+  }
+
+  /* ───── PHASE CARDS ───── */
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin: 48px 0;
+    background: var(--line);
+  }
+
+  .phase-card {
+    background: var(--paper2);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .phase-card::before {
+    content: attr(data-num);
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .phase-card:hover { background: var(--paper3); }
+
+  .phase-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .phase-years {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .phase-title {
+    font-size: 14px;
+    color: var(--cream-dim);
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .phase-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+
+  .phase-amount-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--smoke-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ───── FINANCING BREAKDOWN ───── */
+  .breakdown-section {
+    background: var(--paper2);
+    padding: 80px 0;
+  }
+
+  .breakdown-bars {
+    margin: 48px 0;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 100px;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .bar-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--cream-dim);
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  .bar-track {
+    height: 32px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bar-fill.federation { background: linear-gradient(90deg, #533d1a, #8b6520); }
+  .bar-fill.serbia { background: linear-gradient(90deg, #5c2310, #c4622d); }
+  .bar-fill.montenegro { background: linear-gradient(90deg, #1a3d2b, #2d7a4f); }
+
+  .bar-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+  }
+
+  /* ───── BIG NUMBERS ───── */
+  .big-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin: 48px 0;
+  }
+
+  .big-num-item {
+    background: var(--paper2);
+    padding: 48px 32px;
+    text-align: center;
+  }
+
+  .big-num-value {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .big-num-label {
+    font-size: 13px;
+    color: var(--cream-dark);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* ───── PULL QUOTE ───── */
+  .pull-quote {
+    border-left: 3px solid var(--rust);
+    padding: 32px 40px;
+    margin: 60px 0;
+    background: rgba(196,98,45,0.05);
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.45;
+    margin: 0 0 16px;
+    font-weight: 400;
+  }
+
+  .pull-quote cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--rust-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ───── MYTH VS FACT ───── */
+  .myth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 48px 0;
+    background: var(--line);
+  }
+
+  .myth-card {
+    padding: 40px;
+  }
+
+  .myth-card.myth-side {
+    background: rgba(196,98,45,0.08);
+  }
+
+  .myth-card.fact-side {
+    background: rgba(201,162,39,0.06);
+  }
+
+  .myth-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .myth-card.myth-side .myth-header { color: var(--rust-light); }
+  .myth-card.fact-side .myth-header { color: var(--gold-light); }
+
+  .myth-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream-dim);
+    font-weight: 400;
+  }
+
+  /* ───── TRAFFIC SECTION ───── */
+  .traffic-chart {
+    margin: 48px 0;
+  }
+
+  .traffic-bar-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 120px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .traffic-year-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--cream-dark);
+    text-align: right;
+  }
+
+  .traffic-bar-track {
+    height: 20px;
+    background: rgba(255,255,255,0.04);
+    position: relative;
+  }
+
+  .traffic-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1a3d2b, #2d7a4f);
+    transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .traffic-bar-fill.passengers {
+    background: linear-gradient(90deg, #533d1a, var(--gold));
+  }
+
+  .traffic-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--cream-dim);
+  }
+
+  /* ───── CONCLUSION ───── */
+  .conclusion {
+    background: var(--paper3);
+    padding: 100px 0;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  /* ───── FOOTNOTE ───── */
+  .footnote {
+    padding: 60px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .footnote p {
+    font-size: 13px;
+    color: var(--cream-dark);
+    font-style: italic;
+  }
+
+  /* ───── STICKY PROGRESS ───── */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--rust);
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ───── ILLUSTRATION LABELS ───── */
+  .illus-caption {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke-light);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 60px 0;
+    color: var(--smoke-light);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .separator::before,
+  .separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ───── INLINE ILLUSTRATION ───── */
+  .inline-illus {
+    width: 100%;
+    margin: 48px 0 16px;
+  }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 720px) {
+    .phases-grid { grid-template-columns: 1fr; }
+    .big-numbers { grid-template-columns: 1fr; }
+    .myth-grid { grid-template-columns: 1fr; }
+    .timeline-entry {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .timeline-spine { display: none; }
+    .timeline-left { text-align: left; padding-right: 0; padding-left: 24px; border-left: 1px solid var(--line-strong); }
+    .timeline-right { padding-left: 24px; border-left: 1px solid var(--line-strong); }
+    .timeline-center { display: none; }
+    h1 { font-size: 36px; }
+    .bar-row { grid-template-columns: 100px 1fr 70px; }
+    .hero-content { padding: 0 24px; }
+    .container { padding: 0 24px; }
+    .container-wide { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Minimalist hero illustration: mountains + track -->
+  <svg class="hero-illustration" viewBox="0 0 1400 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="sky" cx="50%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#1c1608"/>
+        <stop offset="100%" stop-color="#0d0b08"/>
+      </radialGradient>
+    </defs>
+    <rect width="1400" height="700" fill="url(#sky)"/>
+
+    <!-- Stars -->
+    <g opacity="0.4">
+      <circle cx="120" cy="60" r="1" fill="#e8dfc8"/>
+      <circle cx="340" cy="40" r="1.5" fill="#e8dfc8"/>
+      <circle cx="580" cy="80" r="1" fill="#c9a227"/>
+      <circle cx="820" cy="30" r="1" fill="#e8dfc8"/>
+      <circle cx="1060" cy="55" r="1.5" fill="#e8dfc8"/>
+      <circle cx="1280" cy="45" r="1" fill="#c9a227"/>
+      <circle cx="200" cy="110" r="0.8" fill="#e8dfc8"/>
+      <circle cx="450" cy="90" r="0.8" fill="#e8dfc8"/>
+      <circle cx="700" cy="120" r="1.2" fill="#e8dfc8"/>
+      <circle cx="950" cy="95" r="0.8" fill="#e8dfc8"/>
+      <circle cx="1150" cy="115" r="1" fill="#e8dfc8"/>
+    </g>
+
+    <!-- Far mountain range -->
+    <path d="M0,480 L60,380 L140,420 L220,300 L320,370 L400,280 L480,340 L560,260 L660,310 L720,240 L800,290 L880,210 L960,270 L1040,220 L1120,260 L1200,200 L1280,240 L1360,210 L1400,230 L1400,700 L0,700Z"
+      fill="#131108" opacity="0.9"/>
+
+    <!-- Mid mountain range -->
+    <path d="M0,560 L80,440 L160,490 L240,400 L360,460 L440,380 L520,430 L620,360 L700,400 L780,330 L860,380 L960,310 L1040,360 L1120,300 L1200,350 L1280,280 L1360,320 L1400,300 L1400,700 L0,700Z"
+      fill="#171410" opacity="0.95"/>
+
+    <!-- Near mountain -->
+    <path d="M-20,700 L80,520 L180,580 L260,500 L350,540 L420,480 L500,520 L580,460 L660,500 L740,440 L820,480 L900,420 L980,460 L1060,400 L1140,450 L1220,390 L1300,430 L1420,380 L1420,700Z"
+      fill="#1a1810"/>
+
+    <!-- Tunnel entrance (left) -->
+    <ellipse cx="200" cy="620" rx="28" ry="36" fill="#0a0908"/>
+    <path d="M172,620 Q200,584 228,620" fill="none" stroke="#2a2520" stroke-width="2"/>
+
+    <!-- Viaduct/bridge sketch -->
+    <g stroke="#2d2820" stroke-width="1.5" fill="none" opacity="0.8">
+      <!-- arches -->
+      <path d="M540,700 L540,640 Q555,620 570,640 L570,700"/>
+      <path d="M570,700 L570,640 Q585,620 600,640 L600,700"/>
+      <path d="M600,700 L600,640 Q615,620 630,640 L630,700"/>
+      <path d="M630,700 L630,640 Q645,620 660,640 L660,700"/>
+      <path d="M660,700 L660,640 Q675,620 690,640 L690,700"/>
+      <!-- deck -->
+      <line x1="530" y1="635" x2="700" y2="635"/>
+    </g>
+
+    <!-- Railway tracks (perspective) -->
+    <g opacity="0.6">
+      <!-- Left rail -->
+      <path d="M0,695 Q300,685 600,670 Q900,655 1400,640" stroke="#3a3228" stroke-width="2" fill="none"/>
+      <!-- Right rail -->
+      <path d="M0,700 Q300,692 600,680 Q900,668 1400,658" stroke="#3a3228" stroke-width="2" fill="none"/>
+      <!-- Ties (sleepers) -->
+      <g stroke="#2d2820" stroke-width="3" opacity="0.5">
+        <line x1="40" y1="693" x2="40" y2="699"/>
+        <line x1="100" y1="691" x2="100" y2="697"/>
+        <line x1="160" y1="690" x2="160" y2="696"/>
+        <line x1="240" y1="688" x2="240" y2="694"/>
+        <line x1="320" y1="686" x2="320" y2="692"/>
+        <line x1="420" y1="684" x2="420" y2="690"/>
+        <line x1="540" y1="682" x2="540" y2="688"/>
+        <line x1="660" y1="680" x2="660" y2="686"/>
+        <line x1="800" y1="677" x2="800" y2="683"/>
+        <line x1="960" y1="673" x2="960" y2="679"/>
+        <line x1="1120" y1="669" x2="1120" y2="675"/>
+        <line x1="1280" y1="664" x2="1280" y2="670"/>
+      </g>
+    </g>
+
+    <!-- Worker figures (minimal sketch) -->
+    <g opacity="0.35" stroke="#8b7a5a" stroke-width="1.2" fill="none">
+      <!-- Worker 1: drilling -->
+      <circle cx="880" cy="558" r="5"/>
+      <line x1="880" y1="563" x2="880" y2="582"/>
+      <line x1="880" y1="568" x2="870" y2="578"/>
+      <line x1="880" y1="568" x2="892" y2="576"/>
+      <line x1="880" y1="582" x2="874" y2="595"/>
+      <line x1="880" y1="582" x2="886" y2="595"/>
+      <!-- pickaxe -->
+      <path d="M892,576 L906,568" stroke-width="1.5"/>
+      <path d="M906,568 L910,563 Q914,558 918,561 L914,566" stroke-width="1.5"/>
+
+      <!-- Worker 2: carrying -->
+      <circle cx="940" cy="554" r="5"/>
+      <line x1="940" y1="559" x2="940" y2="578"/>
+      <line x1="940" y1="565" x2="928" y2="570"/>
+      <line x1="940" y1="565" x2="954" y2="560"/>
+      <line x1="940" y1="578" x2="934" y2="591"/>
+      <line x1="940" y1="578" x2="946" y2="591"/>
+      <!-- plank on shoulder -->
+      <line x1="924" y1="574" x2="966" y2="558" stroke-width="2.5"/>
+
+      <!-- Worker 3: surveying -->
+      <circle cx="1000" cy="549" r="5"/>
+      <line x1="1000" y1="554" x2="1000" y2="573"/>
+      <line x1="1000" y1="560" x2="988" y2="566"/>
+      <line x1="1000" y1="560" x2="1012" y2="556"/>
+      <line x1="1000" y1="573" x2="994" y2="586"/>
+      <line x1="1000" y1="573" x2="1006" y2="586"/>
+      <!-- tripod -->
+      <line x1="1020" y1="545" x2="1010" y2="572"/>
+      <line x1="1020" y1="545" x2="1022" y2="572"/>
+      <line x1="1020" y1="545" x2="1030" y2="568"/>
+      <circle cx="1020" cy="545" r="3" fill="#8b7a5a" stroke="none" opacity="0.5"/>
+    </g>
+
+    <!-- Locomotive (minimal line art, far right) -->
+    <g opacity="0.25" stroke="#8b7a5a" stroke-width="1.5" fill="none">
+      <rect x="1260" y="638" width="80" height="22" rx="2"/>
+      <rect x="1280" y="628" width="40" height="12" rx="2"/>
+      <circle cx="1270" cy="662" r="8"/>
+      <circle cx="1330" cy="662" r="8"/>
+      <line x1="1290" y1="628" x2="1290" y2="620"/>
+      <path d="M1290,618 Q1292,608 1296,606 Q1302,610 1300,618" fill="#8b7a5a" opacity="0.3" stroke="none"/>
+    </g>
+
+    <!-- Gradient overlay bottom -->
+    <rect x="0" y="500" width="1400" height="200" fill="url(#fadeBottom)" opacity="0.4"/>
+    <defs>
+      <linearGradient id="fadeBottom" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0d0b08" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#0d0b08" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="hero-content">
+    <p class="kicker">Originalni naučni rad · Danijel Kežić · 2011</p>
+    <h1>Pruga <em>Beograd–Bar</em></h1>
+    <p class="hero-sub">Istorija finansiranja najvećeg infrastrukturnog projekta u socijalističkoj Jugoslaviji</p>
+    <p class="hero-meta">476 km &nbsp;·&nbsp; 25 godina izgradnje &nbsp;·&nbsp; 449,6 miliona USD</p>
+    <div class="scroll-hint">
+      <span>Skrolujte</span>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4 L8 20 M3 15 L8 20 L13 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ UVOD ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Uvod</p>
+    <h2>„Gigant" među prugama <em>Jugoslavije</em></h2>
+
+    <p>Pruga Beograd–Bar je jedna od najskupljih i najspektakularnijih pruga u jugoistočnoj Evropi. Askanio Šnajder u svojoj knjizi o prugama u planinskim predelima opisuje je kao <strong>„giganta"</strong> — 476 kilometara trase koja presieca Dinaride, probija se kroz desine tunela i prelazi vijadukte iznad dubokih klisura.</p>
+
+    <p>Njena izgradnja trajala je <strong>25 godina</strong> — od 1952. do 1976. Tokom tog perioda jugoslovenski politički i ekonomski sistem je temeljno reformisan nekoliko puta, i svaka reforma je direktno uticala na sudbinu pruge.</p>
+
+    <div class="pull-quote">
+      <p>„U srpskom i crnogorskom javnom mnenju živo je sećanje na veliki uspeh, dok su u Sloveniji i Hrvatskoj za prugu Beograd–Bar vezane negativne emocije."</p>
+      <cite>— Danijel Kežić, Christian-Albrechts-Universität zu Kiel</cite>
+    </div>
+
+    <p>Međutim, <strong>ko je zapravo platio</strong> ovu prugu? Ukupni troškovi i udeo pojedinih republika nikada nisu bili precizno izračunati. Ovaj rad to menja.</p>
+
+    <!-- Inline route illustration -->
+    <svg class="inline-illus" viewBox="0 0 720 160" xmlns="http://www.w3.org/2000/svg" aria-label="Trasa pruge Beograd–Bar sa ključnim tačkama">
+      <defs>
+        <marker id="dot" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="4" markerHeight="4">
+          <circle cx="4" cy="4" r="3" fill="#c4622d"/>
+        </marker>
+      </defs>
+      <!-- Track line -->
+      <path d="M40,100 Q120,90 200,95 Q280,100 340,80 Q420,55 500,70 Q580,85 620,75 Q650,68 680,72"
+        stroke="#3a3028" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Rail lines -->
+      <path d="M40,97 Q120,87 200,92 Q280,97 340,77 Q420,52 500,67 Q580,82 620,72 Q650,65 680,69"
+        stroke="#c4622d" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6" stroke-dasharray="4,3"/>
+      <path d="M40,103 Q120,93 200,98 Q280,103 340,83 Q420,58 500,73 Q580,88 620,78 Q650,71 680,75"
+        stroke="#c4622d" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6" stroke-dasharray="4,3"/>
+      <!-- Cities -->
+      <circle cx="40" cy="100" r="5" fill="#c9a227"/>
+      <circle cx="200" cy="95" r="4" fill="#8b7a5a"/>
+      <circle cx="280" cy="97" r="4" fill="#8b7a5a"/>
+      <circle cx="380" cy="74" r="4" fill="#8b7a5a"/>
+      <circle cx="500" cy="70" r="4" fill="#8b7a5a"/>
+      <circle cx="580" cy="80" r="4" fill="#8b7a5a"/>
+      <circle cx="680" cy="72" r="5" fill="#c9a227"/>
+      <!-- Labels -->
+      <text x="40" y="85" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#c9a227" letter-spacing="0.05em">BEOGRAD</text>
+      <text x="200" y="80" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">VALJEVO</text>
+      <text x="280" y="82" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">T. UŽICE</text>
+      <text x="388" y="60" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">BIJELO POLJE</text>
+      <text x="500" y="56" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">KOLAŠIN</text>
+      <text x="580" y="66" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">TITOGRAD</text>
+      <text x="680" y="58" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#c9a227" letter-spacing="0.05em">BAR</text>
+      <!-- SR boundary -->
+      <line x1="456" y1="30" x2="456" y2="130" stroke="#4a4438" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="390" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#6a5e50" letter-spacing="0.1em">SR SRBIJA</text>
+      <text x="570" y="135" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#6a5e50" letter-spacing="0.1em">SR CRNA GORA</text>
+      <!-- Total length -->
+      <text x="360" y="155" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#4a4438" letter-spacing="0.15em">476 KM UKUPNO</text>
+    </svg>
+    <span class="illus-caption">Trasa pruge Beograd–Bar i granica između SR Srbije i SR Crne Gore</span>
+  </div>
+</section>
+
+<!-- ═══════════════════ ČETIRI FAZE ═══════════════════ -->
+<section class="section">
+  <div class="container-wide">
+    <div class="container" style="padding:0">
+      <p class="section-label">Periodizacija</p>
+      <h2>Četiri faze <em>finansiranja</em></h2>
+      <p>Autor predlaže podelu na četiri faze — za razliku od uobičajene podele na dve — jer su u svakoj donete ključne političke odluke koje su direktno oblikovale sudbinu projekta.</p>
+    </div>
+
+    <div class="phases-grid" style="margin-top:48px">
+      <div class="phase-card" data-num="I">
+        <p class="phase-num">Faza I</p>
+        <p class="phase-years">1952–1961</p>
+        <p class="phase-title">Federalni projekat, nezavisne investicije</p>
+        <p class="phase-amount">65,4 M USD</p>
+        <p class="phase-amount-label">Uloženo — 100% federacija</p>
+        <p style="font-size:13px; color:var(--cream-dark); margin-top:16px; font-weight:300">Izgrađeno tek ~100 km od 476. Radovi zaustavljeni 1957. zbog nedostatka sredstava, nastavljeni 1958. Završene deonice Resnik–Vreoci i Titograd–Bar.</p>
+      </div>
+      <div class="phase-card" data-num="II">
+        <p class="phase-num">Faza II</p>
+        <p class="phase-years">1961–1966</p>
+        <p class="phase-title">Pripremna faza, skromna ulaganja</p>
+        <p class="phase-amount">11,1 M USD</p>
+        <p class="phase-amount-label">Od planiranih 46,7 M USD</p>
+        <p style="font-size:13px; color:var(--cream-dark); margin-top:16px; font-weight:300">Uloženo manje od četvrtine planiranog. Otvorna samo 4 gradilišta. Period intenzivnog projektovanja trase.</p>
+      </div>
+      <div class="phase-card" data-num="III">
+        <p class="phase-num">Faza III</p>
+        <p class="phase-years">1966–1971</p>
+        <p class="phase-title">Zakon, kredit IBRD, narodni zajam</p>
+        <p class="phase-amount">89,9 M USD</p>
+        <p class="phase-amount-label">Ubrzana gradnja</p>
+        <p style="font-size:13px; color:var(--cream-dark); margin-top:16px; font-weight:300">Tri prekretnice: Zakon o finansiranju (1966), kredit Svetske banke od 50 M USD (1968), narodni zajam SR Srbije (1970).</p>
+      </div>
+      <div class="phase-card" data-num="IV">
+        <p class="phase-num">Faza IV</p>
+        <p class="phase-years">1971–1976</p>
+        <p class="phase-title">Srbija i Crna Gora preuzimaju projekat</p>
+        <p class="phase-amount">283,1 M USD</p>
+        <p class="phase-amount-label">4.5× više nego u prethodnoj fazi</p>
+        <p style="font-size:13px; color:var(--cream-dark); margin-top:16px; font-weight:300">Ukidanjem Saveznog investicionog fonda republike preuzimaju finansiranje. SR Srbija sama finansira svoju deonicu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TIMELINE ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Hronologija ključnih odluka</p>
+    <h2><em>Momenti</em> koji su odlučili o sudbini pruge</h2>
+  </div>
+
+  <div class="container-wide" style="margin-top:60px">
+    <div class="timeline">
+      <div class="timeline-spine"></div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left">
+          <p class="timeline-year">1952</p>
+          <p class="timeline-title">Početak izgradnje</p>
+          <p class="timeline-body">Otpočinje gradnja prve dve deonice u Srbiji i Crnoj Gori. Nema formalnog investicionog plana — on će biti donet tek 1955.</p>
+          <span class="timeline-stat">~312 M USD prvobitna procena</span>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-right">
+          <!-- illustration: track laying -->
+          <svg viewBox="0 0 240 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.5">
+            <path d="M10,80 L230,60" stroke="#4a4438" stroke-width="2.5" fill="none"/>
+            <path d="M10,75 L230,55" stroke="#4a4438" stroke-width="2.5" fill="none"/>
+            <g stroke="#2d2820" stroke-width="3">
+              <line x1="30" y1="75" x2="30" y2="82"/>
+              <line x1="70" y1="73" x2="70" y2="80"/>
+              <line x1="110" y1="70" x2="110" y2="77"/>
+              <line x1="160" y1="67" x2="160" y2="74"/>
+              <line x1="210" y1="63" x2="210" y2="70"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left">
+          <!-- tunnel illustration -->
+          <svg viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.45">
+            <rect x="10" y="30" width="220" height="60" fill="#141208"/>
+            <path d="M10,90 L10,50 Q60,20 110,18 Q160,20 210,50 L210,90" fill="#1c1810" stroke="#3a3028" stroke-width="1.5"/>
+            <ellipse cx="110" cy="55" rx="60" ry="32" fill="#0a0908"/>
+            <path d="M50,90 L50,60 Q70,45 110,43 Q150,45 170,60 L170,90" fill="#0a0908" stroke="#2a2520" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-right">
+          <p class="timeline-year">1957</p>
+          <p class="timeline-title">Prva obustava radova</p>
+          <p class="timeline-body">Savezna država ostaje bez sredstava. Svi radovi obustavljeni. Godinu dana kasnije radovi nastavljeni uz ogromne poteškoće.</p>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left">
+          <p class="timeline-year gold-text">1966</p>
+          <p class="timeline-title">Zakon o finansiranju</p>
+          <p class="timeline-body">Donesen realan i precizan investicioni program. Federacija obećava 1,98 mlrd dinara (158,4 M USD). Srbija i Crna Gora po 17,5% troškova.</p>
+          <span class="timeline-stat gold-stat">Rok: 31. dec 1972.</span>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-dot gold"></div>
+        </div>
+        <div class="timeline-right"></div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left"></div>
+        <div class="timeline-center">
+          <div class="timeline-dot gold"></div>
+        </div>
+        <div class="timeline-right">
+          <p class="timeline-year gold-text">1968</p>
+          <p class="timeline-title">Kredit Svetske banke</p>
+          <p class="timeline-body">Međunarodna banka za obnovu i razvoj odobrava <strong>50 miliona USD</strong> uz kamatu od 6,25%. Bez ovog kredita sudbina pruge bila bi zapečaćena.</p>
+          <span class="timeline-stat gold-stat">50 M USD · kamata 6.25%</span>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left">
+          <p class="timeline-year">1970</p>
+          <p class="timeline-title">Narodni zajam SR Srbije</p>
+          <p class="timeline-body">Skupština SR Srbije raspisuje narodni zajam od 500 miliona dinara. Do novembra 1971. prikupljeno <strong>900 miliona dinara</strong> — 94,3% upisano u Srbiji.</p>
+          <span class="timeline-stat">900 M din prikupljeno</span>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-right"></div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left"></div>
+        <div class="timeline-center">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-right">
+          <p class="timeline-year">1971</p>
+          <p class="timeline-title">Ukidanje Saveznog investicionog fonda</p>
+          <p class="timeline-body">Od 1. januara 1971. republike same finansiraju sve projekte. Pruga B–B ostaje poslednji nezavršeni savezni projekat. Hrvatska i Slovenija predlažu odustajanje.</p>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-left">
+          <p class="timeline-year gold-text">1976</p>
+          <p class="timeline-title">Svečano otvaranje</p>
+          <p class="timeline-body">28. maja 1976. pruga je svečano puštena u saobraćaj. Završen poslednji veliki savezni projekat u Jugoslaviji — 4 godine kasnije nego što je planirano.</p>
+          <span class="timeline-stat gold-stat">28. maj 1976.</span>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-dot gold"></div>
+        </div>
+        <div class="timeline-right">
+          <!-- locomotive illustration -->
+          <svg viewBox="0 0 240 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.5">
+            <rect x="40" y="40" width="140" height="32" rx="3" stroke="#8b7a5a" stroke-width="1.5" fill="none"/>
+            <rect x="70" y="28" width="70" height="14" rx="2" stroke="#8b7a5a" stroke-width="1.5" fill="none"/>
+            <circle cx="55" cy="75" r="10" stroke="#8b7a5a" stroke-width="1.5" fill="none"/>
+            <circle cx="160" cy="75" r="10" stroke="#8b7a5a" stroke-width="1.5" fill="none"/>
+            <circle cx="55" cy="75" r="3" fill="#8b7a5a" opacity="0.4"/>
+            <circle cx="160" cy="75" r="3" fill="#8b7a5a" opacity="0.4"/>
+            <line x1="95" y1="28" x2="95" y2="18"/>
+            <path d="M91,12 Q95,6 99,12 Q97,8 95,12Z" fill="#8b7a5a" opacity="0.5"/>
+            <line x1="10" y1="72" x2="230" y2="68" stroke="#4a4438" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ═══════════════════ FINANSIRANJE ═══════════════════ -->
+<section class="breakdown-section">
+  <div class="container">
+    <p class="section-label">Ko je zapravo platio?</p>
+    <h2>Ukupni troškovi: <em>449,6 miliona USD</em></h2>
+
+    <p>Do sada se u literaturi navodilo 210, ili eventualno 300 miliona USD. Precizna analiza izvora otkriva daleko viši iznos — i potpuno drugačiju raspodelu tereta.</p>
+
+    <div class="big-numbers">
+      <div class="big-num-item">
+        <p class="big-num-value">34%</p>
+        <p class="big-num-label">Federacija (SFRJ)<br><em style="font-size:12px;color:var(--smoke-light)">153,1 M USD</em></p>
+      </div>
+      <div class="big-num-item">
+        <p class="big-num-value">42%</p>
+        <p class="big-num-label">SR Srbija<br><em style="font-size:12px;color:var(--smoke-light)">188,0 M USD</em></p>
+      </div>
+      <div class="big-num-item">
+        <p class="big-num-value">24%</p>
+        <p class="big-num-label">SR Crna Gora<br><em style="font-size:12px;color:var(--smoke-light)">108,6 M USD*</em></p>
+      </div>
+    </div>
+
+    <p style="font-size:13px; color:var(--cream-dark); font-style:italic">* Uključuje 72,4 M USD kredita od federacije i ostalih republika koje je Crna Gora bila dužna da vrati.</p>
+
+    <div class="separator">Raspodela troškova po ulagaču</div>
+
+    <div class="breakdown-bars" id="bars">
+      <div class="bar-row">
+        <p class="bar-label">Federacija</p>
+        <div class="bar-track"><div class="bar-fill federation" style="width:0%" data-width="34%"></div></div>
+        <p class="bar-value">153,1 M USD</p>
+      </div>
+      <div class="bar-row">
+        <p class="bar-label">SR Srbija</p>
+        <div class="bar-track"><div class="bar-fill serbia" style="width:0%" data-width="42%"></div></div>
+        <p class="bar-value">188,0 M USD</p>
+      </div>
+      <div class="bar-row">
+        <p class="bar-label">SR Crna Gora</p>
+        <div class="bar-track"><div class="bar-fill montenegro" style="width:0%" data-width="24%"></div></div>
+        <p class="bar-value">108,6 M USD</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>„Na kraju će SR Srbija i SR Crna Gora morati da preuzmu skoro dve trećine ukupnih troškova izgradnje."</p>
+      <cite>— Danijel Kežić, 2011</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ KREDIT IBRD ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Kredit Svetske banke</p>
+    <h2>50 miliona razloga <em>za optimizam</em></h2>
+
+    <p>Pregovori sa Međunarodnom bankom za obnovu i razvoj (danas Svetska banka) počeli su krajem 1965. i trajali su pune tri godine. Jugoslovenski eksperti morali su da ubede banku da će pruga biti rentabilna.</p>
+
+    <p>Kredit od <strong>50 miliona USD</strong> odobren je u martu 1968. Savezna država ga je uzela uz kamatu od 6,25%, uz sporazum da se otplata počinje od 1. januara 1974. — kada bi pruga već bila puštena u saobraćaj.</p>
+
+    <p>Međutim, reformama 1971. ova obaveza je prebačena sa federacije na republike. <strong>SR Srbija</strong> je na kraju morala da sama otplaćuje <strong>25 miliona USD</strong> ovog kredita.</p>
+
+    <!-- IBRD credit visual -->
+    <svg class="inline-illus" viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg" aria-label="Tok kredita IBRD">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <!-- IBRD box -->
+      <rect x="20" y="35" width="140" height="50" rx="3" fill="#141208" stroke="#2d2820" stroke-width="1"/>
+      <text x="90" y="57" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#c9a227" letter-spacing="0.1em">IBRD</text>
+      <text x="90" y="73" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#6a5e50">50 M USD</text>
+
+      <!-- Arrow to federation -->
+      <line x1="160" y1="60" x2="230" y2="60" stroke="#c9a227" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+      <text x="195" y="50" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#6a5e50">1968</text>
+
+      <!-- Federation box -->
+      <rect x="230" y="35" width="140" height="50" rx="3" fill="#141208" stroke="#2d2820" stroke-width="1"/>
+      <text x="300" y="57" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#8b7a5a" letter-spacing="0.05em">FEDERACIJA</text>
+      <text x="300" y="73" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#6a5e50">preuzela 1968</text>
+
+      <!-- Arrow after reform -->
+      <line x1="370" y1="60" x2="440" y2="60" stroke="#c4622d" stroke-width="1.5" fill="none" marker-end="url(#arr)" stroke-dasharray="5,3"/>
+      <text x="405" y="50" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#c4622d">reforma 1971</text>
+
+      <!-- Split boxes -->
+      <rect x="440" y="20" width="120" height="42" rx="3" fill="#141208" stroke="#c4622d" stroke-width="1" opacity="0.7"/>
+      <text x="500" y="38" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#c4622d">SR SRBIJA</text>
+      <text x="500" y="53" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">25 M USD</text>
+
+      <rect x="440" y="72" width="120" height="42" rx="3" fill="#141208" stroke="#4a8a6a" stroke-width="1" opacity="0.7"/>
+      <text x="500" y="90" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#4a8a6a">SR CRN. GORA</text>
+      <text x="500" y="105" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#8b7a5a">25 M USD → oslobođena</text>
+
+      <!-- Note -->
+      <text x="580" y="95" font-family="IBM Plex Mono" font-size="9" fill="#4a4438" font-style="italic">CG oslobođena</text>
+      <text x="580" y="108" font-family="IBM Plex Mono" font-size="9" fill="#4a4438" font-style="italic">vraćanja (1974)</text>
+    </svg>
+    <span class="illus-caption">Tok kredita Međunarodne banke za obnovu i razvoj (1968–1974)</span>
+  </div>
+</section>
+
+<!-- ═══════════════════ MITOVI I ČINJENICE ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Narativ vs. Stvarnost</p>
+    <h2>Mitovi i <em>istorijske činjenice</em></h2>
+    <p>Pruga Beograd–Bar do danas izaziva snažne emocije u svim bivšim jugoslovenskim republikama — ali te emocije su često zasnovane na pogrešnim pretpostavkama.</p>
+  </div>
+
+  <div class="container-wide" style="margin-top:40px">
+    <div class="myth-grid">
+      <div class="myth-card myth-side">
+        <p class="myth-header">✕ &nbsp; Mit</p>
+        <p class="myth-text">„Slovenija i Hrvatska su <em>prisilno finasirali</em> megalomanski projekat koji im nije donosio nikakvu korist."</p>
+      </div>
+      <div class="myth-card fact-side">
+        <p class="myth-header">✓ &nbsp; Činjenica</p>
+        <p class="myth-text">SR Srbija i SR Crna Gora finansirale su <strong>skoro dve trećine</strong> ukupnih troškova. Federalni udeo je iznosio svega trećinu — a i to je delimično otplaćivala Srbija.</p>
+      </div>
+      <div class="myth-card myth-side">
+        <p class="myth-header">✕ &nbsp; Mit</p>
+        <p class="myth-text">„Sredstva prikupljena zajmom za autoput Zagreb–Split preusmerena su na izgradnju pruge Beograd–Bar."</p>
+      </div>
+      <div class="myth-card fact-side">
+        <p class="myth-header">✓ &nbsp; Činjenica</p>
+        <p class="myth-text">Narodni zajam Srbije (1971) prikupio je 900 M dinara — <strong>94,3% upisano u samoj Srbiji</strong>, 4,4% u Crnoj Gori, svega 1,3% u svim ostalim republikama zajedno.</p>
+      </div>
+      <div class="myth-card myth-side">
+        <p class="myth-header">✕ &nbsp; Mit</p>
+        <p class="myth-text">„Izgradnja pruge je koštala oko 210 miliona dolara."</p>
+      </div>
+      <div class="myth-card fact-side">
+        <p class="myth-header">✓ &nbsp; Činjenica</p>
+        <p class="myth-text">Precizna analiza izvora pokazuje ukupne troškove od <strong>449,6 miliona USD</strong> — više od duplo od najčešće navođenog iznosa. I to bez troškova koji su nastali posle otvaranja pruge.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top:48px">
+    <p>Zašto su onda Slovenija i Hrvatska bile toliko glasno protiv? Odgovor je politički: pruga B–B bila je <strong>poslednji savezni projekat</strong> i podsećala je na sistem koji su ove republike željele da ukinu. Osporavanje pruge nije bila ekonomska računica — bila je politička poruka.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ RENTABILNOST ═══════════════════ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Posle 1976.</p>
+    <h2>Da li je izgradnja <em>imala smisla?</em></h2>
+
+    <p>Pruga nije bila u potpunosti elektrifikovana u trenutku otvaranja, a Luka Bar nije bila završena. Ipak, saobraćaj je brzo rastao.</p>
+
+    <div class="traffic-chart" id="traffic">
+      <div style="display:flex; gap:24px; margin-bottom:24px">
+        <div style="display:flex; align-items:center; gap:8px">
+          <div style="width:20px; height:8px; background:linear-gradient(90deg,#1a3d2b,#2d7a4f)"></div>
+          <span style="font-family:IBM Plex Mono; font-size:11px; color:var(--cream-dark); letter-spacing:0.1em">ROBA (M TONA)</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px">
+          <div style="width:20px; height:8px; background:linear-gradient(90deg,#533d1a,var(--gold))"></div>
+          <span style="font-family:IBM Plex Mono; font-size:11px; color:var(--cream-dark); letter-spacing:0.1em">PUTNICI (M)</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:8px; font-family:IBM Plex Mono; font-size:10px; color:var(--smoke-light); letter-spacing:0.2em; text-transform:uppercase">Teretni saobraćaj</div>
+      <div class="traffic-bar-row">
+        <p class="traffic-year-label">1977</p>
+        <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:0%" data-width="46%"></div></div>
+        <p class="traffic-value">3,2 M tona</p>
+      </div>
+      <div class="traffic-bar-row">
+        <p class="traffic-year-label">1981</p>
+        <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:0%" data-width="84%"></div></div>
+        <p class="traffic-value">5,8 M tona</p>
+      </div>
+      <div class="traffic-bar-row">
+        <p class="traffic-year-label">1985</p>
+        <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:0%" data-width="100%"></div></div>
+        <p class="traffic-value">6,9 M tona</p>
+      </div>
+
+      <div style="margin:24px 0 8px; font-family:IBM Plex Mono; font-size:10px; color:var(--smoke-light); letter-spacing:0.2em; text-transform:uppercase">Putnički saobraćaj</div>
+      <div class="traffic-bar-row">
+        <p class="traffic-year-label">1981</p>
+        <div class="traffic-bar-track"><div class="traffic-bar-fill passengers" style="width:0%" data-width="70%"></div></div>
+        <p class="traffic-value">3,4 M putnika</p>
+      </div>
+      <div class="traffic-bar-row">
+        <p class="traffic-year-label">1985</p>
+        <div class="traffic-bar-track"><div class="traffic-bar-fill passengers" style="width:0%" data-width="100%"></div></div>
+        <p class="traffic-value">4,8 M putnika</p>
+      </div>
+    </div>
+
+    <p>Pruga je do 1981. postala <strong>rentabilna</strong>. Tek raspad SFRJ 1991. je prekinuo ovaj trend. U tom kontekstu, svađe o finansiranju iz 1970-ih dobijaju novi smisao: pruga je ekonomski bila opravdana — samo politički kontroverznа.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ ZAKLJUČAK ═══════════════════ -->
+<section class="conclusion">
+  <div class="container">
+    <p class="section-label">Zaključak</p>
+    <h2>Jugoslovenski projekat, ili <em>srpsko-crnogorski</em>?</h2>
+
+    <p>Izgradnja pruge Beograd–Bar je 1952. otpočeta kao savezni projekat — <strong>finansirala ju je federacija 100%</strong>. Završena je 1976. kao projekat SR Srbije i SR Crne Gore, koje su zajedno snosile skoro dve trećine svih troškova.</p>
+
+    <p>S druge strane, bez kredita koji su druge republike dale Crnoj Gori u kritičnim momentima posle 1972. godine, pruga ne bi mogla biti završena. U tom smislu, njen završetak jeste <strong>zajednički uspeh svih šest republika</strong>.</p>
+
+    <div class="pull-quote">
+      <p>„Izgradnja pruge Beograd–Bar je 1952. otpočeta kao savezni projekat, završena 1976. kao projekat SR Srbije i SR Crne Gore."</p>
+      <cite>— Danijel Kežić, 2011</cite>
+    </div>
+
+    <p>Osporavanje pruge od strane Hrvatska i Slovenija nije bilo ekonomski motivisano — bilo je politička borba za ukidanje samog koncepta saveznih projekata. Pruga je bila simbol jednog sistema koji je odlazio u istoriju.</p>
+
+    <p>Pruga Beograd–Bar ostaje i danas jedna od najspektakularnijih željezničkih linija u Evropi — tehničko čudo probijeno kroz Dinaride voljom i novcem srpskog i crnogorskog naroda.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTNOTE ═══════════════════ -->
+<section class="footnote">
+  <div class="container">
+    <p>Izvor: Danijel Kežić, „Pruga Beograd–Bar 1952–1976: Istorija finansiranja najvećeg infrastrukturnog projekta u socijalističkoj Jugoslaviji", UDC 625:658.14/17(497.11+497.16). Primljeno: 1. jul 2011, prihvaćeno: 1. oktobar 2011. Christian-Albrecht-Universität zu Kiel, Philosophische Fakultät, Historisches Seminar, Osteuropäische Geschichte.</p>
+    <p style="margin-top:12px">Vizuelna prezentacija i scrollytelling: novinarska adaptacija originalnog naučnog teksta. Svi iznosi preračunati prema metodologiji autora (zvanični devizni kursevi po godinama).</p>
+  </div>
+</section>
+
+<script>
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (scrollTop / docHeight * 100) + '%';
+});
+
+function animateBars(selector, attr) {
+  document.querySelectorAll(selector).forEach(bar => {
+    bar.style.width = bar.dataset.width || bar.getAttribute(attr) || '0%';
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      if (e.target.id === 'bars') animateBars('#bars .bar-fill', 'data-width');
+      if (e.target.id === 'traffic') animateBars('#traffic .traffic-bar-fill', 'data-width');
+    }
+  });
+}, { threshold: 0.3 });
+
+const barsEl = document.getElementById('bars');
+const trafficEl = document.getElementById('traffic');
+if (barsEl) observer.observe(barsEl);
+if (trafficEl) observer.observe(trafficEl);
+</script>
+</body>
+</html>
