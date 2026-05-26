@@ -696,16 +696,54 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: rgba(196,98,45,0.85);
-    border: 2px solid rgba(232,223,200,0.2);
+    background: rgba(196,98,45,0.92);
+    border: 3px solid rgba(232,223,200,0.35);
+    box-shadow: 0 0 0 8px rgba(196,98,45,0.15), 0 8px 32px rgba(0,0,0,0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    transition: background 0.2s, transform 0.25s;
+    transition: background 0.2s, transform 0.25s, box-shadow 0.25s;
+    z-index: 3;
+  }
+
+  #bb-preview-card:hover #bb-open-btn {
+    background: #c4622d;
+    transform: translate(-50%, -50%) scale(1.12);
+    box-shadow: 0 0 0 12px rgba(196,98,45,0.2), 0 12px 40px rgba(0,0,0,0.7);
+  }
+
+  /* Pulsiranje da privuče pažnju */
+  @keyframes bbPulse {
+    0%   { box-shadow: 0 0 0 0px rgba(196,98,45,0.5), 0 8px 32px rgba(0,0,0,0.6); }
+    70%  { box-shadow: 0 0 0 16px rgba(196,98,45,0), 0 8px 32px rgba(0,0,0,0.6); }
+    100% { box-shadow: 0 0 0 0px rgba(196,98,45,0), 0 8px 32px rgba(0,0,0,0.6); }
+  }
+
+  #bb-open-btn {
+    animation: bbPulse 2.5s ease-out infinite;
+  }
+
+  #bb-preview-card:hover #bb-open-btn {
+    animation: none;
+  }
+
+  /* Natpis ispod play dugmeta */
+  #bb-play-label {
+    position: absolute;
+    top: calc(50% + 52px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(232,223,200,0.6);
+    white-space: nowrap;
+    pointer-events: none;
     z-index: 3;
   }
 
@@ -911,10 +949,11 @@
       <text x="50%" y="314" text-anchor="middle" font-family="monospace" font-size="11" fill="#c9a227" letter-spacing="0.15em" opacity="0.85">1952–1976 · 449,6 M USD · SCROLLYTELLING</text>
     </svg>
     <div id="bb-open-btn" aria-hidden="true">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="white">
         <path d="M8 5.14v14l11-7-11-7z"/>
       </svg>
     </div>
+    <div id="bb-play-label">Otvori priču</div>
   </div>
 
   <div id="bb-caption">
@@ -1661,15 +1700,15 @@ document.addEventListener('keydown', function(e) {
 
 // ═══ INICIJALIZACIJA ═══
 document.addEventListener('DOMContentLoaded', function() {
-  if (isInIframe()) {
-    // U iframe-u: prikaži samo preview karticu
+  // Preview mod ako URL ima ?embed=1 ILI ako smo u iframe-u
+  var isEmbed = window.location.search.indexOf('embed=1') !== -1;
+  var inFrame = false;
+  try { inFrame = window.self !== window.top; } catch(e) { inFrame = true; }
+
+  if (isEmbed || inFrame) {
     document.body.classList.add('preview-mode');
-  } else {
-    // Direktan pristup: prikaži odmah celu priču
-    // (preview kartica ostaje skrivena, sadržaj normalno vidljiv)
   }
 
-  // Pokreni observer za direktan prikaz
   setupObserver(null);
 });
 </script>
