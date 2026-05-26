@@ -641,9 +641,302 @@
     .container { padding: 0 24px; }
     .container-wide { padding: 0 24px; }
   }
+
+  /* ═══ PREVIEW / LIGHTBOX SISTEM ═══ */
+
+  /* Kad je stranica u preview modu, sakrij sav sadržaj */
+  body.preview-mode > *:not(#bb-preview-card) {
+    display: none !important;
+  }
+
+  /* Preview kartica */
+  #bb-preview-card {
+    display: none;
+    min-height: 100vh;
+    background: var(--paper);
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  body.preview-mode #bb-preview-card {
+    display: flex;
+  }
+
+  /* Thumbnail — planinska scena */
+  #bb-thumb {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+    min-height: 260px;
+  }
+
+  #bb-thumb-mountains {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hover efekat na cijeloj kartici */
+  #bb-preview-card:hover #bb-open-btn {
+    background: var(--rust);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  #bb-preview-card:hover {
+    opacity: 0.95;
+  }
+
+  /* Otvoriti dugme (play) */
+  #bb-open-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(196,98,45,0.85);
+    border: 2px solid rgba(232,223,200,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: background 0.2s, transform 0.25s;
+    z-index: 3;
+  }
+
+  /* Caption ispod thumbnailа */
+  #bb-caption {
+    flex-shrink: 0;
+    padding: 18px 24px;
+    background: var(--paper2);
+    border-top: 1px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  #bb-caption-text {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    color: var(--cream-dim);
+    line-height: 1.4;
+  }
+
+  #bb-caption-text strong {
+    color: var(--cream);
+    display: block;
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  #bb-caption-cta {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust-light);
+    white-space: nowrap;
+    padding: 8px 16px;
+    border: 1px solid rgba(196,98,45,0.4);
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  #bb-preview-card:hover #bb-caption-cta {
+    background: rgba(196,98,45,0.1);
+    border-color: var(--rust);
+  }
+
+  /* ═══ FULLSCREEN OVERLAY ═══ */
+  #bb-fullscreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--paper);
+    flex-direction: column;
+    animation: bbSlideIn 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  #bb-fullscreen.open {
+    display: flex;
+  }
+
+  @keyframes bbSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Top bar fullscreen-a */
+  #bb-fs-bar {
+    flex-shrink: 0;
+    height: 52px;
+    background: rgba(13,11,8,0.97);
+    border-bottom: 1px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  #bb-fs-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(184,168,136,0.4);
+  }
+
+  #bb-fs-close {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,180,140,0.25);
+    background: transparent;
+    cursor: pointer;
+    color: var(--cream-dim);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    font-family: sans-serif;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+
+  #bb-fs-close:hover {
+    background: rgba(196,98,45,0.2);
+    border-color: var(--rust);
+    color: var(--rust-light);
+  }
+
+  /* Scrollable sadržaj unutar fullscreen-a */
+  #bb-fs-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Kad je fullscreen otvoren, sakrij preview */
+  body.preview-mode #bb-fullscreen.open ~ #bb-preview-card,
+  body.preview-mode.fs-open #bb-preview-card {
+    display: none !important;
+  }
+
+  /* ESC hint u baru */
+  #bb-esc-hint {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: rgba(184,168,136,0.25);
+    letter-spacing: 0.15em;
+    margin-right: 12px;
+  }
+
+  @media (max-width: 600px) {
+    #bb-esc-hint { display: none; }
+    #bb-caption { flex-direction: column; align-items: flex-start; gap: 12px; }
+    #bb-open-btn { width: 52px; height: 52px; }
+  }
 </style>
 </head>
 <body>
+
+<!-- ═══ PREVIEW KARTICA (prikazuje se kad je stranica u iframe-u) ═══ -->
+<div id="bb-preview-card" onclick="bbOpenFullscreen()" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter'||event.key===' ')bbOpenFullscreen()"
+     aria-label="Otvori interaktivni članak: Pruga Beograd–Bar">
+
+  <div id="bb-thumb">
+    <svg id="bb-thumb-mountains" viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="bbsky" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#1c1608"/>
+          <stop offset="100%" stop-color="#0d0b08"/>
+        </radialGradient>
+        <linearGradient id="bbfade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0d0b08" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#0d0b08" stop-opacity="0.75"/>
+        </linearGradient>
+      </defs>
+      <rect width="800" height="340" fill="url(#bbsky)"/>
+      <circle cx="60" cy="30" r="1" fill="#e8dfc8" opacity="0.5"/>
+      <circle cx="180" cy="20" r="1.3" fill="#c9a227" opacity="0.6"/>
+      <circle cx="340" cy="15" r="0.9" fill="#e8dfc8" opacity="0.4"/>
+      <circle cx="500" cy="25" r="1" fill="#e8dfc8" opacity="0.4"/>
+      <circle cx="660" cy="18" r="1.3" fill="#c9a227" opacity="0.5"/>
+      <path d="M0,220 L80,155 L160,185 L240,130 L330,165 L400,110 L480,150 L560,100 L640,140 L720,95 L800,125 L800,340 L0,340Z" fill="#131108"/>
+      <path d="M0,265 L90,200 L180,225 L260,185 L360,210 L440,175 L530,205 L620,165 L700,195 L800,180 L800,340 L0,340Z" fill="#171410"/>
+      <path d="M0,340 L70,270 L160,290 L250,260 L340,280 L430,250 L520,272 L610,242 L700,265 L800,248 L800,340Z" fill="#1a1810"/>
+      <g stroke="#2d2820" stroke-width="1.3" fill="none" opacity="0.7">
+        <path d="M310,340 L310,295 Q319,280 328,295 L328,340"/>
+        <path d="M328,340 L328,295 Q337,280 346,295 L346,340"/>
+        <path d="M346,340 L346,295 Q355,280 364,295 L364,340"/>
+        <path d="M364,340 L364,295 Q373,280 382,295 L382,340"/>
+        <line x1="302" y1="288" x2="390" y2="288"/>
+      </g>
+      <ellipse cx="100" cy="305" rx="26" ry="32" fill="#0a0908"/>
+      <path d="M74,305 Q100,273 126,305" fill="none" stroke="#2a2520" stroke-width="1.5"/>
+      <path d="M0,332 Q250,325 500,318 Q650,313 800,308" stroke="#3a3228" stroke-width="2" fill="none"/>
+      <path d="M0,338 Q250,332 500,326 Q650,321 800,317" stroke="#3a3228" stroke-width="2" fill="none"/>
+      <g stroke="#2d2820" stroke-width="3" opacity="0.45">
+        <line x1="60" y1="332" x2="60" y2="338"/>
+        <line x1="160" y1="329" x2="160" y2="335"/>
+        <line x1="280" y1="326" x2="280" y2="332"/>
+        <line x1="420" y1="322" x2="420" y2="328"/>
+        <line x1="580" y1="317" x2="580" y2="323"/>
+        <line x1="720" y1="313" x2="720" y2="319"/>
+      </g>
+      <g stroke="#8b7a5a" stroke-width="1.1" fill="none" opacity="0.35">
+        <circle cx="510" cy="258" r="4.5"/>
+        <line x1="510" y1="263" x2="510" y2="278"/>
+        <line x1="510" y1="269" x2="501" y2="276"/>
+        <line x1="510" y1="269" x2="521" y2="275"/>
+        <line x1="510" y1="278" x2="504" y2="290"/>
+        <line x1="510" y1="278" x2="516" y2="290"/>
+      </g>
+      <rect x="0" y="180" width="800" height="160" fill="url(#bbfade)"/>
+      <text x="50%" y="290" text-anchor="middle" font-family="Georgia,serif" font-size="28" font-weight="bold" fill="#e8dfc8" opacity="0.95">Pruga Beograd–Bar</text>
+      <text x="50%" y="314" text-anchor="middle" font-family="monospace" font-size="11" fill="#c9a227" letter-spacing="0.15em" opacity="0.85">1952–1976 · 449,6 M USD · SCROLLYTELLING</text>
+    </svg>
+    <div id="bb-open-btn" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+        <path d="M8 5.14v14l11-7-11-7z"/>
+      </svg>
+    </div>
+  </div>
+
+  <div id="bb-caption">
+    <div id="bb-caption-text">
+      <strong>Pruga Beograd–Bar</strong>
+      Istorija finansiranja najvećeg infrastrukturnog projekta SFRJ
+    </div>
+    <div id="bb-caption-cta">Pročitaj →</div>
+  </div>
+</div>
+
+<!-- ═══ FULLSCREEN OVERLAY ═══ -->
+<div id="bb-fullscreen" role="dialog" aria-modal="true" aria-label="Pruga Beograd–Bar: Scrollytelling">
+  <div id="bb-fs-bar">
+    <span id="bb-fs-title">Pruga Beograd–Bar · 1952–1976</span>
+    <div style="display:flex;align-items:center">
+      <span id="bb-esc-hint">ESC za zatvaranje</span>
+      <button id="bb-fs-close" onclick="bbCloseFullscreen()" aria-label="Zatvori i vrati se na sajt">×</button>
+    </div>
+  </div>
+  <div id="bb-fs-content"></div>
+</div>
 
 <div class="progress-bar" id="progress"></div>
 
@@ -1273,32 +1566,112 @@
 </section>
 
 <script>
+// ═══ PROGRESS BAR ═══
 const progress = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.width = (scrollTop / docHeight * 100) + '%';
-});
 
+function updateProgress() {
+  const fsContent = document.getElementById('bb-fs-content');
+  const scrollEl = document.getElementById('bb-fullscreen').classList.contains('open')
+    ? document.getElementById('bb-fs-content')
+    : window;
+  const scrollTop = scrollEl === window ? window.scrollY : scrollEl.scrollTop;
+  const scrollHeight = scrollEl === window
+    ? document.documentElement.scrollHeight - window.innerHeight
+    : scrollEl.scrollHeight - scrollEl.clientHeight;
+  if (progress) progress.style.width = (scrollTop / scrollHeight * 100) + '%';
+}
+
+window.addEventListener('scroll', updateProgress);
+
+// ═══ ANIMATE BARS ═══
 function animateBars(selector, attr) {
   document.querySelectorAll(selector).forEach(bar => {
     bar.style.width = bar.dataset.width || bar.getAttribute(attr) || '0%';
   });
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      if (e.target.id === 'bars') animateBars('#bars .bar-fill', 'data-width');
-      if (e.target.id === 'traffic') animateBars('#traffic .traffic-bar-fill', 'data-width');
-    }
-  });
-}, { threshold: 0.3 });
+function setupObserver(root) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        if (e.target.id === 'bars') animateBars('#bars .bar-fill', 'data-width');
+        if (e.target.id === 'traffic') animateBars('#traffic .traffic-bar-fill', 'data-width');
+      }
+    });
+  }, { threshold: 0.3, root: root || null });
 
-const barsEl = document.getElementById('bars');
-const trafficEl = document.getElementById('traffic');
-if (barsEl) observer.observe(barsEl);
-if (trafficEl) observer.observe(trafficEl);
+  const barsEl = document.getElementById('bars');
+  const trafficEl = document.getElementById('traffic');
+  if (barsEl) observer.observe(barsEl);
+  if (trafficEl) observer.observe(trafficEl);
+}
+
+// ═══ PREVIEW / FULLSCREEN LOGIKA ═══
+
+// Detektuj da li smo u iframe-u
+function isInIframe() {
+  try { return window.self !== window.top; } catch(e) { return true; }
+}
+
+// Kloniraj glavni sadržaj u fullscreen kontejner
+function cloneStoryIntoFullscreen() {
+  const fsContent = document.getElementById('bb-fs-content');
+  if (fsContent.children.length > 0) return; // već klonirano
+
+  // Skupi sve sekcije priče (sve osim preview kartice i fullscreen overlay-a)
+  const storyParts = [];
+  document.querySelectorAll('body > *').forEach(el => {
+    const id = el.id;
+    if (id === 'bb-preview-card' || id === 'bb-fullscreen') return;
+    storyParts.push(el.cloneNode(true));
+  });
+
+  storyParts.forEach(el => fsContent.appendChild(el));
+
+  // Ponovo pokreni animacije za klonirane elemente
+  setTimeout(() => setupObserver(fsContent), 100);
+
+  // Scroll progress za fullscreen
+  fsContent.addEventListener('scroll', updateProgress);
+}
+
+function bbOpenFullscreen() {
+  cloneStoryIntoFullscreen();
+  const fs = document.getElementById('bb-fullscreen');
+  fs.classList.add('open');
+  document.body.classList.add('fs-open');
+  // Skroluj na vrh
+  document.getElementById('bb-fs-content').scrollTop = 0;
+  // Focus trap
+  document.getElementById('bb-fs-close').focus();
+}
+
+function bbCloseFullscreen() {
+  document.getElementById('bb-fullscreen').classList.remove('open');
+  document.body.classList.remove('fs-open');
+  document.getElementById('bb-preview-card').focus();
+}
+
+// ESC taster
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('bb-fullscreen').classList.contains('open')) {
+    bbCloseFullscreen();
+  }
+});
+
+// ═══ INICIJALIZACIJA ═══
+document.addEventListener('DOMContentLoaded', function() {
+  if (isInIframe()) {
+    // U iframe-u: prikaži samo preview karticu
+    document.body.classList.add('preview-mode');
+  } else {
+    // Direktan pristup: prikaži odmah celu priču
+    // (preview kartica ostaje skrivena, sadržaj normalno vidljiv)
+  }
+
+  // Pokreni observer za direktan prikaz
+  setupObserver(null);
+});
 </script>
 </body>
 </html>
